@@ -1,0 +1,11 @@
+Here is a SQL query using the JOIN function along GROUP BY and ORDER BY.
+
+SELECT D.country,
+        COUNT(customer_id)
+FROM customer A
+INNER JOIN address B ON A.sddress_id = B.address_id
+INNER JOIN city C ON B.city_id = C.city_id
+INNER JOIN countyr D ON C.country_ID = D.country_ID
+GROUP BY country
+ORDER BY COUNT (country) desc
+LIMIT 10;

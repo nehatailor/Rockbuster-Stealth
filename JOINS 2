@@ -10,5 +10,5 @@ INNER JOIN payment E ON A.customer_id = E.customer_id
 WHERE D.country IN ('India', 'China', 'United States', 'Japan', 'Mexico', 'Brazil', 'Russian Federation', 'Philippines', 'Turkey','Indonesia')
 AND C.city IN ('Aurora', 'Atlixco', 'Xintai', 'Adoni', 'Dhule', 'Kurashiki', 'Pingxiang', 'Sivas', 'Celaya', 'So Leopoldo')
 GROUP BY E.customer_id, A.first_name, A.last_name, C.city, D.country
-ORDER BY city SUM(amount) desc
+ORDER BY SUM(amount) desc
 LIMIT 5;

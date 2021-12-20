@@ -1,4 +1,5 @@
 Here is a SQL query using subqueries and aliases.
+This will show the calculated average amount paid.
 
 SELECT AVG(Total_Amount_Paid) AS Total_Amount_Paid
 FROM (SELECT E.customer_id, A.first_name, A.last_name, D.country, C.city,

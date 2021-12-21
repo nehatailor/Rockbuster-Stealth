@@ -1,0 +1,4 @@
+Here is a SQL query with a common table expression.
+
+WITH Total_Amount_Paid AS
+(SELECT AVG(Total_Amount_Paid) as Total_Amount_Paid

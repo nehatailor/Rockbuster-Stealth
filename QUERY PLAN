@@ -1,0 +1,20 @@
+Here is an SQL query to create a query plan.
+This is simply achieved by using the 'EXPLAIN' function in the CTE query to achieve the desired result.
+
+EXPLAIN
+WITH Total_Amount_Paid AS
+(SELECT AVG(Total_Amount_Paid) as Total_Amount_Paid
+FROM (SELECT E.customer_id, A.first_name, A.last_name, D.country, C.city,
+        SUM (amount) AS Total_Amount_Paid
+FROM customer A
+INNER JOIN address B ON A.address_id = B.address_id
+INNER JOIN city C ON B.city_id = C.city_id
+INNER JOIN country D ON C.country_id = D.country_ID
+INNER JOIN payment E ON A.customer_id = E.customer_id
+WHERE D.country IN ('India', 'China', 'United States', 'Japan', 'Mexico', 'Brazil', 'Russian Federation', 'Philippines', 'Turkey','Indonesia')
+AND C.city IN ('Aurora', 'Atlixco', 'Xintai', 'Adoni', 'Dhule', 'Kurashiki', 'Pingxiang', 'Sivas', 'Celaya', 'So Leopoldo')
+GROUP BY E.customer_id, A.first_name, A.last_name, C.city, D.country
+ORDER BY SUM(amount) desc
+LIMIT 5) AS average)
+SELECT AVG (Total_Amount_Paid) AS avergae_amount_paid
+FROM Total_Amount_Paid
